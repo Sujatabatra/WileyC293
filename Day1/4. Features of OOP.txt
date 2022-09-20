@@ -1,0 +1,7 @@
+Features of OOP
+1. Abstraction : Hiding Unessential details from the user of the System.
+2. Data Hiding : Protecting your Data From the Outside world.
+3. Encapsulation : Collecting Data and the methods those operate on that data into a single Unit.
+4. Inheritance : Creation of new things with the help of existing things , without hampering the originality of existing things.
+Advantage : reusability, extensibility
+5. Polymorphism : One Name but multiple forms and depending upon the situation it is changing its functionality.
