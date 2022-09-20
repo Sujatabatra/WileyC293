@@ -1,0 +1,25 @@
+1. Integer
+a. byte  : 1 byte => 8 bits
+b. short : 2 bytes  => 16 bits
+c. int : 4 bytes => 32 bits
+d. long : 8 bytes => 64 bits
+
+2. Floating Point
+a. float : 4 bytes
+b. double : 8 bytes
+
+3. Charcter
+a. char : 2 bytes => (Unicode Character Set)
+
+4. Boolean
+a. boolean => true/false
+
+Any Programming Language 
+1. Keywords
+2. Identifier
+3. Literal
+
+For Example : int x=10;
+int : keyword
+x : identifier
+10 : Literal
