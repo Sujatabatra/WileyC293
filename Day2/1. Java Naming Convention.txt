@@ -1,0 +1,5 @@
+Java Naming Conventions
+
+1. class name must be in PascalCase : e.g MyFactorial
+2. variable names and method names must be in camelCase : e.g. setNumber(), myNumber
+3. package name must be in lowercase : 
