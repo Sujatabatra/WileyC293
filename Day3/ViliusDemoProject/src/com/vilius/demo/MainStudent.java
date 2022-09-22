@@ -15,6 +15,12 @@ public class MainStudent {
 		marks.inputStudentDetailsWithMarks(111, "BBBBB", 90, 78, 56);
 		marks.displayStudentDetailsWithMarks();
 		
+		System.out.println("=========================");
+		
+		Grade grade=new Grade();
+		grade.inputStudentDetailsWithMarks(102, "CCCCC", 89, 67, 45);
+		grade.calculate();
+		grade.displayCompleteDetails();
 	
 	}
 
