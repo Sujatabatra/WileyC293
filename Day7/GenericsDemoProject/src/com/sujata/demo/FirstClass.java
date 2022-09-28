@@ -65,6 +65,16 @@ public class FirstClass {
 		GenericInput<Person> ob2=new GenericInput<>();
 		ob2.setValue(new Person(101,"AAAAA"));
 		System.out.println("Person : "+ob2.getValue().getPersonId()+"  "+ob2.getValue().getPersonName());
+		
+//		implicit call goes to toString() method which is of Object class
+//		System.out.println("Person : "+ob2.getValue().toString());
+		System.out.println("Person : "+ob2.getValue());
+		
+		Object obj=new Person(111,"Adam");
+		System.out.println("obj : "+obj);
+		
+		obj=new Object();
+		System.out.println("obj : "+obj);
 
 	}
 
