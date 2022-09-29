@@ -3,6 +3,7 @@ package com.sujata.service;
 import java.util.Collection;
 
 import com.sujata.entity.Employee;
+import com.sujata.entity.PaySlip;
 import com.sujata.persistence.EmployeeDao;
 import com.sujata.persistence.EmployeeDaoImpl;
 
@@ -47,6 +48,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return true;
 		}
 		return false;
+	}
+	
+	/*
+	 * House Rent Allowances : 20% of salary
+	 * Fuel Allowance : 10% of Salary
+	 *  random deductions1 : 8% of salary
+	 *  random deduction2 : 5% of salary
+	 */
+	public PaySlip generatePaySlip(int employeeId) {
+		Employee employee=employeeDao.getRecordById(employeeId);
+		if(employee!=null) {
+			double hra=.20*employee.getSalary();
+			double fa=.10*employee.getSalary();
+			double deductionOne=.08*employee.getSalary();
+			double deductionTwo=.05*employee.getSalary();
+			double netPayableSalary=employee.getSalary()+hra+fa-deductionOne-deductionTwo;
+			PaySlip employeePayslip=new PaySlip(employee, hra, fa, deductionOne, deductionTwo, netPayableSalary);
+			return employeePayslip;
+		}
+		return null;
 	}
 
 }
