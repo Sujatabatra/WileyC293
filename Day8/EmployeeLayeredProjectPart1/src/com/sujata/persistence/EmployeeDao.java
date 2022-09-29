@@ -8,4 +8,7 @@ public interface EmployeeDao {
 
 	Collection<Employee> getAllReccord();
 	Employee getRecordById(int employeeId);
+	Employee saveRecord(Employee employee);
+	Employee deleteRecord(int employeeId);
+	
 }
