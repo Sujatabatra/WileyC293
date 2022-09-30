@@ -1,6 +1,7 @@
 package com.sujata.demo;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class BookSearch {
 
@@ -44,6 +45,15 @@ public class BookSearch {
 		return newBookList;
 	}
 	
+	
+	public ArrayList<Book> genericSearchForBooksNew(Predicate<Book> bookPredicate){
+		ArrayList<Book> newBookList=new ArrayList<Book>();
+		for(Book book:bookList) {
+			if(bookPredicate.test(book))
+				newBookList.add(book);
+		}
+		return newBookList;
+	}
 	
 	
 	
