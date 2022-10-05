@@ -21,12 +21,16 @@ public class GreetConsumer {
 		 */
 //		AnnotationConfigApplicationContext springContainer;
 //		springContainer=new AnnotationConfigApplicationContext(GreetConfig.class);
+		
 		ApplicationContext springContainer=new ClassPathXmlApplicationContext("greet.xml");
+		
 		/*
 		 * IOC : Inversion of control : Seperating the dependecy logic from the actual business logic of you application
+		 * and how we achive IOC : with the help of dependency injection
+		 * Dependecy Injection : setter and constructor
 		 */
-		Greet greet1=(Greet)springContainer.getBean("mrng");
-		greet1.wish("Sam");
+		Greet greet1=(Greet)springContainer.getBean("eve");
+		greet1.wish();
 
 	}
 

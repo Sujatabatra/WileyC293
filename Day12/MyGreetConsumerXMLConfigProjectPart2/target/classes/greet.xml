@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Setter Injection -->
+	<bean id="mrng" class="com.sujata.producer.GreetMorning">
+		<property name="name" value="Oliver"></property>
+	</bean>
+
+	<!-- Constructor Injection -->
+	<bean id="eve" class="com.sujata.producer.GreetEvening">
+		<constructor-arg name="name" value="Sam"></constructor-arg>
+	</bean>
+</beans>
