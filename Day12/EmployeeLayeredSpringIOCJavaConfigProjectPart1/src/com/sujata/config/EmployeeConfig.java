@@ -9,6 +9,7 @@ import com.sujata.presentation.EmployeePresentation;
 import com.sujata.presentation.EmployeePresentationImpl;
 import com.sujata.service.EmployeeService;
 import com.sujata.service.EmployeeServiceImpl;
+import com.sujata.service.EmployeeServiceImplWithChangeRequest;
 
 @Configuration
 public class EmployeeConfig {
@@ -20,7 +21,8 @@ public class EmployeeConfig {
 	
 	@Bean("service")
 	public EmployeeService getEmployeeService() {
-		return new EmployeeServiceImpl(getEmployeeDao());
+//		return new EmployeeServiceImpl(getEmployeeDao());
+		return new EmployeeServiceImplWithChangeRequest(getEmployeeDao());
 	}
 	
 	@Bean("presentation")

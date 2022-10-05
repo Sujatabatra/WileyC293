@@ -19,6 +19,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.employeeDao = employeeDao;
 	}
 
+	
+	public EmployeeDao getEmployeeDao() {
+		return employeeDao;
+	}
+
+
 	@Override
 	public Collection<Employee> getAllEmployee() {
 		return employeeDao.getAllReccord();
@@ -63,6 +69,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * Fuel Allowance : 10% of Salary
 	 *  random deductions1 : 8% of salary
 	 *  random deduction2 : 5% of salary
+	 *  ============================
+	 *  Change Request 
+	 *  House Rent Allowances : 25% of salary
+	 *  Fuel Allowance : 15% of Salary
+	 *  random deductions1 : 10% of salary
+	 *  random deduction2 : 3% of salary
 	 */
 	public PaySlip generatePaySlip(int employeeId) {
 		Employee employee=employeeDao.getRecordById(employeeId);
