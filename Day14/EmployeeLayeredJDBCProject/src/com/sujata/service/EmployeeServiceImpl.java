@@ -33,8 +33,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public boolean deleteEmployee(int employeeId) {
-		Employee employee=employeeDao.deleteRecord(employeeId);
-		if(employee!=null)
+		int rows=employeeDao.deleteRecord(employeeId);
+		if(rows>0)
 			return true;
 		return false;
 	}

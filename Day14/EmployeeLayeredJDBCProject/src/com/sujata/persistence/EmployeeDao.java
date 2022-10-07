@@ -9,6 +9,6 @@ public interface EmployeeDao {
 	Collection<Employee> getAllReccord();
 	Employee getRecordById(int employeeId);
 	int saveRecord(Employee employee);
-	Employee deleteRecord(int employeeId);
+	int deleteRecord(int employeeId);
 	
 }

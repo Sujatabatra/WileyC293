@@ -172,9 +172,50 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee deleteRecord(int employeeId) {
+	public int deleteRecord(int employeeId) {
 
-		return null;
+		Connection connection=null;
+		PreparedStatement preparedStatement=null;
+		
+		try {
+//			1.Connect
+//			1.1 Register Driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+//			1.2 Connect To DataBase
+			connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/wileyc293", "root", "sujata");
+			
+			
+//			2.Query
+//			statement=connection.createStatement();
+			preparedStatement=connection.prepareStatement("DELETE FROM EMPLOYEES WHERE EMPID=?");
+			
+					
+			preparedStatement.setInt(1, employeeId);
+			
+//			DML : Data Manipulation Language (insert,delete,update query) : use executeUpdate() method
+			
+			int rows=preparedStatement.executeUpdate();
+			
+//			3.Process Result
+			
+			return rows;
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			return 0;
+		}
+		finally {
+//			4.Close
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return 0;
 	}
 
 }
