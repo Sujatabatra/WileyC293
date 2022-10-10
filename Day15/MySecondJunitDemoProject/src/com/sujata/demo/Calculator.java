@@ -15,5 +15,11 @@ public class Calculator {
 			throw new NegativeNumberException("Negative Integer Not Allowed");
 	}
 	
-	
+	/*
+	 * Requirement Document
+	 * RQ2. Sum of two Positive Integers
+	 */
+	public int add(int number1,int number2)throws NegativeNumberException{
+		return 0;
+	}
 }
