@@ -1,6 +1,7 @@
 package com.sujata.presentation;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 		System.out.println("4. Delete Employee By ID ");
 		System.out.println("5. Increment Employee Salary");
 		System.out.println("6. Generate PaySlip");
-		System.out.println("7. Exit");
+		System.out.println("7. Search Employees By Department");
+		System.out.println("8. Exit");
 	}
 
 	@Override
@@ -94,6 +96,14 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 				System.out.println(paySlip);
 			break;
 		case 7:
+			System.out.println("Enter Department : ");
+			String deptt=scanner.next();
+			List<Employee> empListByDeptt=employeeService.searchEmployeesInSpecificDeptt(deptt);
+			for(Employee empl:empListByDeptt) {
+				System.out.println(empl);
+			}
+			break;
+		case 8:
 			System.out.println("Thanks for using Employee Management System!");
 			System.exit(0);
 		default:
