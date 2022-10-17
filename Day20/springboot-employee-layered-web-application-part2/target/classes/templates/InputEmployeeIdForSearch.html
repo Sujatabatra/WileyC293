@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -7,8 +7,10 @@
 <body>
 	<h1>Employee Management System</h1>
 	<h2>Search Employee Page</h2>
-	<form action="./searchEmployee" method="get">
-		Enter Employee ID : <input type="text" name="empId"><br>
+	<form action="#" th:action="@{./searchEmployee}" th:object="${emp}" method="post">
+		Select Employee ID : <select th:field="*{empId}">
+		<option th:each="id : ${empIds}" th:value="${id}" th:text="${id}"></option>
+		</select><br>
 		<br> <input type="submit" value="Search Employee">
 	</form>
 	<br>

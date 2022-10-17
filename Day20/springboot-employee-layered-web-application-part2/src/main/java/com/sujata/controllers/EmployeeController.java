@@ -2,6 +2,7 @@ package com.sujata.controllers;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +23,31 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	@ModelAttribute("empDepartments")
+	List<String> getDepartment() {
+		return employeeService.getAllEmployee().stream()
+		.map(Employee::getEmpDepartment)
+		.distinct()
+		.collect(Collectors.toList());
+	}
+
+	@ModelAttribute("empDesignations")
+	List<String> getDesignation() {
+		return employeeService.getAllEmployee().stream()
+		.filter(employee->employee.getEmpDesignation()!=null)
+		.map(Employee::getEmpDesignation)
+		.distinct()
+		.collect(Collectors.toList());
+	}
+	
+	@ModelAttribute("empIds")
+	List<Integer> getEmployeeIds() {
+		return employeeService.getAllEmployee().stream()
+		.map(Employee::getEmpId)
+		.collect(Collectors.toList());
+	}
+	
+	
 	@RequestMapping("/")
 	public ModelAndView getMenuPageController() {
 		return new ModelAndView("Menu");
@@ -29,7 +55,7 @@ public class EmployeeController {
 
 	@RequestMapping("/saveEmployeePage")
 	public ModelAndView getSaveEmployeePage() {
-		return new ModelAndView("InputEmployeeData","command",new Employee());
+		return new ModelAndView("InputEmployeeData", "command", new Employee());
 	}
 
 	@RequestMapping("/saveEmployee")
@@ -52,19 +78,20 @@ public class EmployeeController {
 
 	@RequestMapping("/searchByIdPage")
 	public ModelAndView searchEmployeeByIdPageController() {
-		return new ModelAndView("InputEmployeeIdForSearch");
+		return new ModelAndView("InputEmployeeIdForSearch","emp",new Employee());
 	}
 
 	@RequestMapping("/searchEmployee")
-	public ModelAndView searchEmployeeController(@RequestParam("empId") int employeeId) {
+//	public ModelAndView searchEmployeeController(@RequestParam("empId") int employeeId) {
+	public ModelAndView searchEmployeeController(@ModelAttribute("emp") Employee empl) {
 		ModelAndView modelAndView = new ModelAndView();
-		Employee employee = employeeService.searchEmployeeById(employeeId);
+		Employee employee = employeeService.searchEmployeeById(empl.getEmpId());
 
 		if (employee != null) {
 			modelAndView.addObject("employee", employee);
 			modelAndView.setViewName("ShowEmployee");
 		} else {
-			modelAndView.addObject("message", "Employee with ID " + employeeId + " does not exist!");
+			modelAndView.addObject("message", "Employee with ID " + empl.getEmpId() + " does not exist!");
 			modelAndView.setViewName("Output");
 		}
 		return modelAndView;

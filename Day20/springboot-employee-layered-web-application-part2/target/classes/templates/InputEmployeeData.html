@@ -11,19 +11,12 @@
 		Enter Employee ID : <input type="text" th:field="*{empId}"><br>
 		<br> Enter Employee Name : <input type="text" th:field="*{empName}"><br>
 		<br> Enter Employee Designation : 
-			<input type="radio" th:field="*{empDesignation}" value="Manager">Manager 
-			<input type="radio" th:field="*{empDesignation}" value="Sr. Manager">Sr.Manager 
-			<input type="radio" th:field="*{empDesignation}" value="Associate">Associate
-			<input type="radio" th:field="*{empDesignation}" value="Sr. Associate">Sr.Associate 
-			<input type="radio" th:field="*{empDesignation}" value="Executive">Executive
-			<input type="radio" th:field="*{empDesignation}" value="Sr. Executive">Sr.Executive
+			<input type="radio" th:field="*{empDesignation}" 
+			th:each="desig : ${empDesignations}" th:value="${desig}" th:text="${desig}" >Manager 
 		<br>
 		<br> 
 		Enter Employee Department : <select th:field="*{empDepartment}">
-			<option value="IT">IT</option>
-			<option value="Sales">Sales</option>
-			<option value="Marketing">Marketing</option>
-			<option value="Purchase">Purchase</option>
+			<option th:each="deptt : ${empDepartments}" th:value="${deptt}" th:text="${deptt}"> </option>
 		</select><br>
 		<br> Enter Employee Salary : <input type="text" th:field="*{empSalary}"><br>
 		<br> <input type="submit" value="Save Employee">
