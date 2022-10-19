@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  
+ <script type="text/javascript">
+ $(document).ready(function(){
+	 $("#search").click(function(){
+		 $.ajax({
+			 type:"GET",
+			 url: "http://localhost:8082/employees/"+$("#EmpId").val(),
+			 dataType: "json",
+			 success:function(result,status,xhr){
+				 var table=$("<table><tr><th>Employee Details</th></tr>");
+				 table.append("<tr><td>Employee ID :</td><td>"+result["empId"]+"</td></tr>");
+				 table.append("<tr><td>Employee Name :</td><td>"+result["empName"]+"</td></tr>");
+				 table.append("<tr><td>Department :</td><td>"+result["empDepartment"]+"</td></tr>");
+				 table.append("<tr><td>Designation :</td><td>"+result["empDesignation"]+"</td></tr>");
+				 table.append("<tr><td>Salary :</td><td>"+result["empSalary"]+"</td></tr>");
+				 
+				 $("#message").html(table);
+			 },
+			 error: function(xhr,status,error){
+				 alert("result : "+status+" "+error+" "+xhr.status+" "+xhr.statusText);
+			 }
+		 })
+	 })
+	 
+	 $("#showAll").click(function(){
+		 $.ajax({
+			 type:"GET",
+			 url:"http://localhost:8082/employees",
+			 dataType:"json",
+			 success:function(result,status,xhr){
+				 var table=$("<table border='1'><tr><th colspan='5'>Employee Details</th></tr>");
+				 table.append("<tr><th>Employee Id</th><th>Name</th><th>Departmnet</th><th>Designation</th><th>Salary</th></tr>");
+				 
+				 for(index=0;index<result.length;index++){
+					 table.append("<tr><th>"+result[index]["empId"]+"</th><th>"+result[index]["empName"]+"</th><th>"+result[index]["empDepartment"]+"</th><th>"+result[index]["empDesignation"]+"</th><th>"+result[index]["empSalary"]+"</th></tr>")
+				 }
+				 $("#message").html(table);
+			 },
+			 error: function(xhr,status,error){
+				 alert("result : "+status+" "+error+" "+xhr.status+" "+xhr.statusText);
+			 }
+		 
+		 })
+	 })
+ })
+ 
+ </script>
+</head>
+<body>
+<h1>Demonstrating Ajax with JQuery</h1>
+Enter Employee ID : <input type="text" id="EmpId"><br><br>
+<button id="search">Search</button>
+<button id="showAll">Show All</button>
+<div id="message"></div>
+</body>
+</html>
