@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  
+  function printText(){
+	  $("#message").text("<h1>Updating div using Jquery</h1>")
+  }
+  	$(document).ready(function(){
+  		$("#btn1").click(printText)
+  	})
+  
+  </script>
+</head>
+<body>
+<p>Hello how are you</p>
+<br>
+<br>
+<div id="message">Hello EveryOne!</div>
+<br>
+<br>
+<button id="btn1">Change Text</button>
+</body>
+</html>

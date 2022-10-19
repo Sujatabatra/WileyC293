@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="style.css" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+/*
+ * JQuey(selector).action(function())
+ */
+/*
+ jQuery(document).ready(function(){
+	 jQuery("#btn").click(function(){
+		 alert("Hi From JQuery , Welcome "+$(#name).value());
+	 })
+ })
+*/
+
+$(document).ready(function(){
+	 $("#btn").click(function(){
+		 alert("Hi From JQuery, Welcome "+$("#name").val());
+	 })
+})
+
+</script>
+</head>
+<body>
+<h1>Welcome to the world of HTML And JavaScript</h1>
+
+<input type="text" id="name"><br><br>
+<input type="button" value="Wish" id="btn">
+</body>
+</html>
